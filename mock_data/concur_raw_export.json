@@ -1,0 +1,101 @@
+{
+  "trips": [
+    {
+      "TripId": "TRIP-2026-A1",
+      "UserEmail": "alex.analyst@enterprise.com",
+      "segments": [
+        {
+          "SegmentType": "AIR",
+          "Airline": "British Airways",
+          "FlightNumber": "BA178",
+          "DepartureAirport": "JFK",
+          "ArrivalAirport": "LHR",
+          "ClassOfService": "ECONOMY",
+          "DepartureTime": "2026-04-10T10:00:00Z",
+          "Charges": "650.00"
+        },
+        {
+          "SegmentType": "HOTEL",
+          "HotelName": "London Central Hilton",
+          "CheckInDate": "2026-04-10T15:00:00Z",
+          "CheckOutDate": "2026-04-14T11:00:00Z",
+          "RoomNights": "4",
+          "Country": "GB",
+          "Charges": "920.00"
+        },
+        {
+          "SegmentType": "CAR",
+          "Vendor": "Hertz",
+          "VehicleClass": "HYBRID",
+          "Distance": "80",
+          "DistanceUnit": "MILES",
+          "PickupDate": "2026-04-10T11:00:00Z"
+        }
+      ]
+    },
+    {
+      "TripId": "TRIP-2026-B2",
+      "UserEmail": "samantha.director@enterprise.com",
+      "segments": [
+        {
+          "SegmentType": "AIR",
+          "Airline": "Singapore Airlines",
+          "FlightNumber": "SQ31",
+          "DepartureAirport": "SFO",
+          "ArrivalAirport": "BLR",
+          "ClassOfService": "BUSINESS",
+          "DepartureTime": "2026-04-15T21:00:00Z",
+          "Charges": "4200.00"
+        },
+        {
+          "SegmentType": "HOTEL",
+          "HotelName": "Leela Palace Bangalore",
+          "CheckInDate": "2026-04-17T14:00:00Z",
+          "CheckOutDate": "2026-04-24T12:00:00Z",
+          "RoomNights": "7",
+          "Country": "IN",
+          "Charges": "2100.00"
+        },
+        {
+          "SegmentType": "CAR",
+          "Vendor": "Avis India",
+          "VehicleClass": "SUV",
+          "Distance": "320",
+          "DistanceUnit": "KM",
+          "PickupDate": "2026-04-17T15:00:00Z"
+        }
+      ]
+    },
+    {
+      "TripId": "TRIP-2026-ERRORS",
+      "UserEmail": "error.maker@enterprise.com",
+      "segments": [
+        {
+          "SegmentType": "AIR",
+          "Airline": "Mystery Jet",
+          "FlightNumber": "MJ999",
+          "DepartureAirport": "JFK",
+          "ArrivalAirport": "XYZ",
+          "ClassOfService": "FIRST",
+          "DepartureTime": "2026-04-20T08:00:00Z"
+        },
+        {
+          "SegmentType": "HOTEL",
+          "HotelName": "Temporal Paradox Inn",
+          "CheckInDate": "2026-04-25T14:00:00Z",
+          "CheckOutDate": "2026-04-20T12:00:00Z",
+          "RoomNights": "5",
+          "Country": "US"
+        },
+        {
+          "SegmentType": "CAR",
+          "Vendor": "Speedy Rental",
+          "VehicleClass": "ECONOMY",
+          "Distance": "1500",
+          "DistanceUnit": "MILES",
+          "PickupDate": "2026-04-20T09:00:00Z"
+        }
+      ]
+    }
+  ]
+}
