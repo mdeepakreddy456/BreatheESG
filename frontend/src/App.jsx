@@ -438,9 +438,9 @@ export default function App() {
                         const s2Val = t["Scope 2"];
                         const s3Val = t["Scope 3"];
                         
-                        const h1 = (s1Val / maxVal) * 150;
-                        const h2 = (s2Val / maxVal) * 150;
-                        const h3 = (s3Val / maxVal) * 150;
+                        const h1 = s1Val > 0 ? Math.max((s1Val / maxVal) * 150, 3) : 0;
+                        const h2 = s2Val > 0 ? Math.max((s2Val / maxVal) * 150, 3) : 0;
+                        const h3 = s3Val > 0 ? Math.max((s3Val / maxVal) * 150, 3) : 0;
                         
                         const x = 50 + idx * (500 / trendCounts);
                         const y1 = 170 - h1;
@@ -449,10 +449,34 @@ export default function App() {
 
                         return (
                           <g key={t.month}>
+                            <title>
+                              {(() => {
+                                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                const parts = t.month.split('-');
+                                const mName = parts.length === 2 ? `${months[parseInt(parts[1], 10) - 1]} 20${parts[0].substring(2)}` : t.month;
+                                const s1 = s1Val.toLocaleString(undefined, { maximumFractionDigits: 1 });
+                                const s2 = s2Val.toLocaleString(undefined, { maximumFractionDigits: 1 });
+                                const s3 = s3Val.toLocaleString(undefined, { maximumFractionDigits: 1 });
+                                const total = (s1Val + s2Val + s3Val).toLocaleString(undefined, { maximumFractionDigits: 1 });
+                                return `${mName}\n---------------------\nScope 1: ${s1} kg\nScope 2: ${s2} kg\nScope 3: ${s3} kg\n---------------------\nTotal: ${total} kg CO₂e`;
+                              })()}
+                            </title>
                             {/* Stacked bar segments */}
-                            {h1 > 0 && <rect x={x} y={y1} width={colWidth} height={h1} fill="var(--scope-1)" opacity="0.8" rx="2" />}
-                            {h2 > 0 && <rect x={x} y={y2} width={colWidth} height={h2} fill="var(--scope-2)" opacity="0.8" rx="2" />}
-                            {h3 > 0 && <rect x={x} y={y3} width={colWidth} height={h3} fill="var(--scope-3)" opacity="0.8" rx="2" />}
+                            {h1 > 0 && (
+                              <rect x={x} y={y1} width={colWidth} height={h1} fill="var(--scope-1)" opacity="0.8" rx="2">
+                                <title>Scope 1: {s1Val.toLocaleString(undefined, { maximumFractionDigits: 1 })} kg CO₂e</title>
+                              </rect>
+                            )}
+                            {h2 > 0 && (
+                              <rect x={x} y={y2} width={colWidth} height={h2} fill="var(--scope-2)" opacity="0.8" rx="2">
+                                <title>Scope 2: {s2Val.toLocaleString(undefined, { maximumFractionDigits: 1 })} kg CO₂e</title>
+                              </rect>
+                            )}
+                            {h3 > 0 && (
+                              <rect x={x} y={y3} width={colWidth} height={h3} fill="var(--scope-3)" opacity="0.8" rx="2">
+                                <title>Scope 3: {s3Val.toLocaleString(undefined, { maximumFractionDigits: 1 })} kg CO₂e</title>
+                              </rect>
+                            )}
                             
                             {/* X-Axis labels */}
                             <text x={x + colWidth/2} y="190" fill="var(--text-dark)" fontSize="9" textAnchor="middle">
