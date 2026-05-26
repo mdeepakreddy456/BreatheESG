@@ -847,9 +847,11 @@ export default function App() {
                 <h4 className="drawer-section-title">Raw Source Lineage (Lineage Ledger)</h4>
                 <div className="lineage-grid">
                   {Object.entries(selectedRecord.raw_data_lineage).map(([k, v]) => (
-                    <div key={k} className="lineage-item">
+                    <div key={k} className="lineage-item" style={{ gridColumn: typeof v === 'object' ? 'span 2' : 'auto' }}>
                       <span className="lineage-label">{k}</span>
-                      <span className="lineage-val">{String(v)}</span>
+                      <span className="lineage-val" style={{ fontFamily: typeof v === 'object' ? 'monospace' : 'inherit', whiteSpace: typeof v === 'object' ? 'pre-wrap' : 'normal', fontSize: typeof v === 'object' ? '0.75rem' : 'inherit' }}>
+                        {typeof v === 'object' ? JSON.stringify(v, null, 2) : String(v)}
+                      </span>
                     </div>
                   ))}
                 </div>
