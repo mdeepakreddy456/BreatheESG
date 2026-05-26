@@ -91,3 +91,6 @@ frontend/build/
 *.sln
 *.sw?
 .DS_Store
+
+# Private Email Draft
+SUBMISSION.md
