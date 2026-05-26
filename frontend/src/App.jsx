@@ -297,10 +297,13 @@ export default function App() {
   // Search filter
   const filteredRecords = records.filter(rec => {
     const sTerm = searchTerm.toLowerCase();
+    const rawLineageStr = JSON.stringify(rec.raw_data_lineage || {}).toLowerCase();
     return (
       rec.category.toLowerCase().includes(sTerm) ||
       rec.activity_type.toLowerCase().includes(sTerm) ||
-      (rec.facility_details?.name || 'unmapped').toLowerCase().includes(sTerm)
+      (rec.facility_details?.name || 'unmapped').toLowerCase().includes(sTerm) ||
+      (rec.facility_details?.plant_code || '').toLowerCase().includes(sTerm) ||
+      rawLineageStr.includes(sTerm)
     );
   });
 
