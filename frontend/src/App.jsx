@@ -456,7 +456,15 @@ export default function App() {
                             
                             {/* X-Axis labels */}
                             <text x={x + colWidth/2} y="190" fill="var(--text-dark)" fontSize="9" textAnchor="middle">
-                              {t.month.substring(5) === '01' ? t.month : t.month.substring(5)}
+                              {(() => {
+                                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                const parts = t.month.split('-');
+                                if (parts.length === 2) {
+                                  const mIdx = parseInt(parts[1], 10) - 1;
+                                  return `${months[mIdx]} '${parts[0].substring(2)}`;
+                                }
+                                return t.month;
+                              })()}
                             </text>
                           </g>
                         );
